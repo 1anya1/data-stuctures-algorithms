@@ -44,3 +44,34 @@ console.log(same([1,2,2], [1,4,2]))
 //false
 console.log(same([1,2,3,1], [1,4,1]))
 //false
+
+
+// refractored version
+function sameRefractored(arr1, arr2){
+    if(arr1.length !== arr2.length ){
+        return false
+    }
+    const obj1={}
+    const obj2={}
+
+    function convert(el, obj){
+        for(let value of el){
+            //assigning values to the key easier way to itterate 
+            obj[value] = (obj[value] || 0) +1;
+        }
+    }
+    convert(arr1, obj1);
+    convert(arr2, obj2);
+    
+    for(let key in obj1){
+        if(!(key**2 in obj2)){
+            return false
+        } if(obj2[key**2]!== obj1[key]){
+            return false 
+        }
+        return true
+    }
+   
+}
+console.log(sameRefractored([1,2,3,1], [1,4,1,1]))
+console.log(sameRefractored([1,2,3,1], [1,4,1,9]))
