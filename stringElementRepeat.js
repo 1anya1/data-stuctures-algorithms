@@ -51,11 +51,50 @@ charCount(null)
 
 function charCount(str){
     //create an object where indivisual char will go
-    
-
+    const result ={}
     //loop through string to check each value 
-        //if  char is letter or number AND char is the key in object add 1 count to it
-        //if char is letter or number AND is not a key in the object object add key and add 1 to it
-        //if char is cometihng else do nothing 
+    for(let i=0; i<str.length; i++){
+        let char = str[i].toLowerCase()
+        //regex to check if the element is number or a letter 
+         //if char is not a letter or a number do nothing 
+        if(/[a-z0-9]/.test(char)){
+            //if char is letter or number AND is not a key in the object object add key and add 1 to it
+            if( result[char] >0){
+                result[char]++;
+            } else {
+                //if  char is letter or number AND char is the key in object add 1 count to it
+                result[char]=1;
+            }
+
+        }
+    }
     //return object as output 
+    return result
 }
+
+console.log(charCount('Hell !!!!2323     '))
+
+//refractoring the code improving on the algorithm
+//shorten up the loop using for of  and using tetriary for if else statements
+
+function charCountRefractor(str){
+    //create an object where indivisual char will go
+    const result ={}
+    //loop through string to check each value 
+    for(let char of str){
+         char = char.toLowerCase()
+        //regex to check if the element is number or a letter 
+         //if char is not a letter or a number do nothing 
+        if(/[a-z0-9]/.test(char)){
+            //if  char is letter or number AND char is the key in object add 1 count to it
+            //if char is letter or number AND is not a key in the object object add key and add 1 to it
+            result[char] >0 ? result[char]++ :  result[char]=1;
+        }
+    }
+    //return object as output 
+    return result
+}
+
+console.log(charCountRefractor('anna 1234 Lunat$$k'))
+//{ '1': 1, '2': 1, '3': 1, '4': 1, a: 3, n: 3, l: 1, u: 1, t: 1, k: 1 }
+
