@@ -37,3 +37,29 @@ console.log(countUniqueValues([-2,-1,0, 1]));
 //4
 console.log(countUniqueValues([1,2,3,4,4,4,7,7,7,12,12,13]));
 //7
+
+
+//example if we can change out the value in the array 
+
+//in this example were modifying the existing array by updating the values on i pointer
+//its a lagging pointer that updates the new indexie with the value of arr[j] if the values are
+//not the same. We take the index vlaue of i and add one to it to get the values of unique 
+// variables 
+
+function unique(arr){
+    if(arr.length<1){
+        return 0
+    }
+    let i=0;
+    for(let j=1; j<arr.length; j++){
+        if(arr[i]!==arr[j]){
+            i++;
+            arr[i]=arr[j]
+        }
+    }
+    return arr[i+1]
+
+}
+
+console.log(unique([1,2,3,4,4,4,7,7,7,12,12,13]));
+//7
