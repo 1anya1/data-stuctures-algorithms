@@ -42,3 +42,5 @@ function anagram(str1, str2){
 
 console.log(anagram('iceman', 'icman'))
 //false
+
+console.log(anagram('cinema', 'iceman'))
