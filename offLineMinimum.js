@@ -5,3 +5,22 @@
 // Output: 1,2
 // Input: ["4","E","1","E","2","E","3","E"]
 // Output: 4,1,2,3
+
+function offLineMinimum(strArr) {
+  const numsArr = [];
+  const smallestVal = [];
+  for (let i = 0; i < strArr.length; i++) {
+    if (strArr[i] !== "E") {
+      numsArr.push(strArr[i]);
+    } else {
+      const smallest = Math.min(...numsArr);
+      smallestVal.push(smallest);
+      const idx = numsArr.indexOf(smallest.toString());
+      numsArr[idx] = Infinity;
+    }
+  }
+  return smallestVal.toString();
+}
+
+console.log(offLineMinimum(["1", "2", "E", "E", "3"]));
+//1,2
